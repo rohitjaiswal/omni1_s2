@@ -148,6 +148,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CMActions
 
+# DeviceParts
+PRODUCT_PACKAGES += \
+    DeviceParts
+	
 # Display
 PRODUCT_PACKAGES += \
     gralloc.msm8952 \
