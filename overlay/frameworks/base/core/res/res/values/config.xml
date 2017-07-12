@@ -259,6 +259,9 @@
     -->
     <bool name="config_enableWifiDisplay">true</bool>
 
+	<!-- Boolean indicating whether we want button brightness support -->
+	<bool name="config_button_brightness_support">true</bool>
+	
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
@@ -356,6 +359,11 @@
 
     <!-- Flag specifying whether WFC over IMS is available on device -->
     <bool name="config_device_wfc_ims_available">true</bool>
+	
+	<!-- Flag specifying whether WFC over IMS should be available for carrier: independent of
+          carrier provisioning. If false: hard disabled. If true: then depends on carrier
+          provisioning, availability etc -->
+     <bool name="config_carrier_wfc_ims_available">true</bool>
 
 	<!-- The list absolute paths of jar/apk files containing the device specific handlers,
         delimited by File.pathSeparator, which defaults to ":" on Android -->

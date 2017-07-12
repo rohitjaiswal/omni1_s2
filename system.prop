@@ -1,7 +1,17 @@
+# set SELinux property value
+ro.build.selinux=1
+
+
 #
 # system.prop for msm8952
 #
 
+# Data modules
+ro.use_data_netmgrd=true
+persist.data.netmgrd.qos.enable=true
+persist.data.mode=concurrent
+persist.data.iwlan.enable=true
+ 
 debug.sf.hw=0
 debug.egl.hw=0
 persist.hwc.mdpcomp.enable=true
@@ -90,6 +100,7 @@ persist.media.rtsp.dropaudio=1
 av.debug.disable.pers.cache=1
 
 # Camera
+media.camera.ts.monotonic=1
 persist.camera.HAL3.enabled=1
 vidc.enc.dcvs.extra-buff-count=2
 camera.hal1.packagelist=com.skype.raider,com.google.android.talk

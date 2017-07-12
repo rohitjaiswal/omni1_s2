@@ -111,6 +111,7 @@ AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
 AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 #AUDIO_FEATURE_ENABLED_DS2_DOLBY_DAP := true
+TARGET_USES_QCOM_MM_AUDIO := true
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
@@ -176,6 +177,9 @@ TARGET_HAVE_SIGNED_VENUS_FW := true
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
+#RECOVERY FONT
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
+
 # Sensors
 USE_SENSOR_MULTI_HAL := true
 
@@ -191,15 +195,6 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 TARGET_USES_WCNSS_MAC_ADDR_REV := true
-
-# Enable dexpreopt to speed boot time
-ifeq ($(HOST_OS),linux)
-  ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
 
 # Twrp
 #RECOVERY_VARIANT := twrp
@@ -235,3 +230,6 @@ TARGET_OTA_ASSERT_DEVICE := s2,le_s2,le_s2_ww
 
 # inherit from the proprietary version
 -include vendor/leeco/s2/BoardConfigVendor.mk
+
+# Use CLANG
+USE_CLANG_PLATFORM_BUILD := true

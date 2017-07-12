@@ -94,7 +94,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES +=  \
     $(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
-    $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_platform_info_extcodec.xml:system/etc/audio_platform_info_extcodec.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
@@ -138,15 +137,14 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+     camera.msm8952 \
+    libqomx_core \
+    libmm-qcamera \
+    SnapdragonCamera
 
 # OMNI Charger Images
 PRODUCT_PACKAGES += \
     omni_charger_res_images
-
-# CMActions
-PRODUCT_PACKAGES += \
-    CMActions
 
 # DeviceParts
 PRODUCT_PACKAGES += \
@@ -154,11 +152,12 @@ PRODUCT_PACKAGES += \
 	
 # Display
 PRODUCT_PACKAGES += \
-    gralloc.msm8952 \
     copybit.msm8952 \
+	gralloc.msm8952 \
     hwcomposer.msm8952 \
-    memtrack.msm8952
-
+    memtrack.msm8952 \
+    liboverlay
+	
 # Display / OpenGLES
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
@@ -174,7 +173,24 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fingerprint.msm8952 \
     fingerprintd
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8952 \
+    libcurl
 
+PRODUCT_PACKAGES += \
+    flp.conf \
+    gps.conf \
+    izat.conf \
+    lowi.conf \
+    sap.conf \
+    xtwifi.conf
+	
+# IPA Manager
+PRODUCT_PACKAGES += \
+    ipacm \
+    IPACM_cfg.xml
+	
 # IR
 PRODUCT_PACKAGES += \
     consumerir.msm8952
@@ -204,29 +220,22 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8952
 
-# GPS
-PRODUCT_PACKAGES += \
-    gps.msm8952 \
-    libcurl
-
-PRODUCT_PACKAGES += \
-    flp.conf \
-    gps.conf \
-    izat.conf \
-    lowi.conf \
-    sap.conf \
-    xtwifi.conf
-
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles_8956.xml \
+	
+PRODUCT_COPY_FILES += \	
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
+# Messaging
+PRODUCT_PACKAGES += \
+    messaging
+	
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -244,15 +253,15 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libstagefright_soft_flacdec
 
-# IPA Manager
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml
-
 # Power
 PRODUCT_PACKAGES += \
     power.msm8952
 
+# Qualcomm dependencies
+PRODUCT_PACKAGES += \
+    libtinyxml \
+    libxml2
+	
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,${LOCAL_PATH}/rootdir,root)
